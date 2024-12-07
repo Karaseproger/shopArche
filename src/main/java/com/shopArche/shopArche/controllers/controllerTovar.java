@@ -23,7 +23,13 @@ public class controllerTovar {
     @Autowired
     private TovarRep tovarRep;
 
-    @PostMapping("uploadTovar")
+
+    @GetMapping("/uploadTovar")
+    public String showUpluadForm(){
+        return "uploadForm";
+    }
+
+    @PostMapping("/uploadTovar")
     public String upluadTovar(@RequestParam("photoFile") MultipartFile photoFile, @RequestParam String  description , String title, Model model){
         if(photoFile.isEmpty()) {
         model.addAttribute("message", "Пожалуйста, выберите видео для загрузки.");

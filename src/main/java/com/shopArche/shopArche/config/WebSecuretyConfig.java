@@ -16,11 +16,12 @@ public class WebSecuretyConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/videos/**", "/videos", "/zadan/add", "/execute", "/upload", "/uploadVideo"))
+                        .ignoringRequestMatchers("/videos/**", "/",  "/videos", "/uploadTovar", "/execute", "/upload","C:/uploads/photo/",   "/uploadVideo"))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/register").permitAll()
-                        .requestMatchers("C:/uploads/videos/").permitAll()
+                        .requestMatchers("/uploadTovar").permitAll()
+                        .requestMatchers("C:/uploads/photo/").permitAll()
                         .requestMatchers("/upload").permitAll()
                         .requestMatchers("/videos/**").permitAll()
                         .requestMatchers("/users").permitAll()

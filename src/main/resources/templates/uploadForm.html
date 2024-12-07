@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #34495e;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .error {
+            margin-top: 0.5rem;
+            color: #e74c3c;
+            font-size: 0.875rem;
+        }
+
+        .btn {
+            background: #3498db;
+            color: #fff;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .success-message {
+            color: #27ae60;
+            background: #eafaf1;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Выставить товар на продажу</h1>
+    <form th:action="@{/add-product}" method="post" class="form">
+        <div class="form-group">
+            <label for="name">Название Товара</label>
+            <input type="text" id="name" name="name" placeholder="Enter product name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Дискрипторы</label>
+            <textarea id="description" name="description" placeholder="Enter product description" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Ценна</label>
+            <input type="number" id="price" name="price" placeholder="Enter product price" min="0" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Описание товара</label>
+            <input type="text" id="category" name="category" placeholder="Enter product category">
+        </div>
+
+        <label for="photoFile">Фото товара:</label><br>
+        <input type="file" id="photoFile" name="photoFile" accept="image/*" required><br><br>
+
+
+        <button type="submit" class="btn">выставить</button>
+    </form>
+</div>
+</body>
+</html>

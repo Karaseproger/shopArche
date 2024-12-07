@@ -3,7 +3,7 @@ package com.shopArche.shopArche.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-public class RegistorDto {
+public class RegisterDto {
     @NotEmpty
     private String firstName;
 

@@ -1,11 +1,12 @@
 package com.shopArche.shopArche.controllers;
 
 import com.shopArche.shopArche.Repository.Users;
-import com.shopArche.shopArche.model.RegistorDto;
+import com.shopArche.shopArche.model.RegisterDto;
 import com.shopArche.shopArche.model.SecuretyPost;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -15,21 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
 
-public class acounController {@Autowired
-private Users repo;
+@Controller
+public class acounController {
+    @Autowired
+        private Users repo;
 
 
     @GetMapping("/register")
     public String register(Model model){
-        RegistorDto registerDto = new RegistorDto();
-        model.addAttribute(registerDto);
+        model.addAttribute("registerDto",new RegisterDto());
         model.addAttribute("success", false);
         return "register";
     }
 
 
     @PostMapping("/register")
-    public String register(Model model, @Valid @ModelAttribute RegistorDto registerDto, BindingResult result){
+    public String register(Model model, @Valid @ModelAttribute("registerDto") RegisterDto registerDto, BindingResult result){
         if(!registerDto.getPassword().equals(registerDto.getConfirmPassword())){
             result.addError(
                     new FieldError("registerDto", "confirmPassword", "Password and Confirm Password do not match")
@@ -60,15 +62,15 @@ private Users repo;
 
             repo.save(newUser);
 
-            model.addAttribute("registerDto", new RegistorDto());
+            model.addAttribute("registerDto", new RegisterDto());
             model.addAttribute("success", true);
 
 
         }
         catch (Exception ex){
             result.addError(
-                    new FieldError("registerDto", "firstName"
-                            , ex.getMessage())
+                    new FieldError("registerDto", "firstName",
+                            ex.getMessage())
             );
         }
         return "register";

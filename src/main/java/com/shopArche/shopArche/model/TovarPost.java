@@ -21,6 +21,16 @@ public class TovarPost {
 
     private String description;
 
+    private String prise;
+
+    public String getPrise() {
+        return prise;
+    }
+
+    public void setPrise(String prise) {
+        this.prise = prise;
+    }
+
     public Long getId() {
         return id;
     }

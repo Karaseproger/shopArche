@@ -17,20 +17,20 @@
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
                         <a href="#" class="nav-link text-secondary">
-                            <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
-                            Home
+                            <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="/"></use></svg>
+                            Домашняя страничка
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="/uploadTovar" class="nav-link text-white">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
-                            Dashboard
+                            Хочу продать
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="/tovars" class="nav-link text-white">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
-                            Orders
+                            хочу купить
                         </a>
                     </li>
                     <li>
@@ -66,12 +66,13 @@
     <h2 class="text-center mb-5">Список товаров</h2>
 
     <div class="videos-row">
-        <th:block th:each="tovarzs: ${tovars}">
+        <th:block th:each="tovars: ${tovars}">
             <div class="video-card">
-                <h3 class="video-title" th:text="${tovar.title}">Название видео</h3>
+                <h3 class="video-title" th:text="${tovars.title}">Название видео</h3>
                 <img controls>
-                    <source th:src="@{/tovars/{filename}(filename=${tovars.fileName})}" type="gpj">
-                    Ваш браузер не поддерживает воспроизведение товара.
+                <source th:src="@{/tovars/{filename}(filename=${tovars.fileName})}" type="image/jpeg">
+
+                Ваш браузер не поддерживает воспроизведение товара.
                 </img>
                 <div class="video-info">
                     <p th:text="'Описание: ' + ${tovars.description}">описание товара</p>
